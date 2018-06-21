@@ -1,9 +1,12 @@
 import discord
 import json
+import random
 
 bot = discord.Client()
 with open('secrets.json') as f:
 	secrets = json.load(f)
+with open('nya.json') as f:
+	nyas = json.load(f)
 
 @bot.event
 async def on_ready():
@@ -17,6 +20,6 @@ async def on_ready():
 @bot.event
 async def on_message(message):
 	if "nya" in message.content and message.author.id != secrets["client"]["id"]:
-		await bot.send_message(message.channel, "nya")
+		await bot.send_message(message.channel, nyas[random.randint(0,len(nyas))])
 
 bot.run(secrets["bot"]["token"])
