@@ -20,6 +20,6 @@ async def on_ready():
 @bot.event
 async def on_message(message):
 	if "nya" in message.content and message.author.id != secrets["client"]["id"]:
-		await bot.send_message(message.channel, nyas[random.randint(0,len(nyas))])
+		await bot.send_message(message.channel, nyas[random.randint(0,len(nyas)-1)])
 
 bot.run(secrets["bot"]["token"])
